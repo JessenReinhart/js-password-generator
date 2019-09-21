@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    password: <span id="pass"></span><br>
+    length: <span id="length"></span>
+</body>
+<script>
+    function random() {
+        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        var length = 12 + Math.floor(Math.random() * 20); //set the minimum length of the password to 12 and the maximum to 31
+        var special = "!@#$%^&*(){}[]\|;:'<>,./?"
+        var generatedpass = "";
+
+        for (var i = 0; i < length; i++) {
+            if (i % 2 === 0) {
+                generatedpass += chars.substr(Math.floor(Math.random() * chars.length), 1)
+            } else if (i % 3 === 0) {
+                generatedpass += special.substr(Math.floor(Math.random() * special.length), 1)
+            } else {
+                generatedpass += Math.floor(Math.random() * 10)
+            }
+
+        }
+        function shuffle(word) {
+            var shuffledWord = '';
+            word = word.split('');
+            while (word.length > 0) {
+                shuffledWord += word.splice(Math.trunc(word.length * Math.random()), 1);
+            }
+            return shuffledWord;
+        }
+        var testvar = "12345"
+        var actualpass = shuffle(generatedpass)
+        var el = document.querySelector("#pass")
+        var charlength = document.querySelector("#length")
+        el.textContent = actualpass
+        charlength.textContent = actualpass.length
+        console.log(`pre-shuffled pass : ${generatedpass}`)
+        console.log(`shuffled pass: ${actualpass}`)
+        console.log(`pass length: ${actualpass.length}`)
+    }
+
+    random()
+
+
+
+</script>
+
+</html>
