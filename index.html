@@ -6,11 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        @media screen and (max-width: 1000px) {
+            body {
+                background-color: whitesmoke;
+                padding: 0 50px;
+            }
+
+            .title {
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            }
+
+            .container {
+                padding: 24px 20px;
+                background-color: white;
+                box-shadow: 0 4px 8px rbga(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: row;
+            }
+
+            #pass {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                background-color: whitesmoke;
+                margin-right: 8px;
+                flex-grow: 2;
+                padding: 8px 10px;
+            }
+
+            button {
+                background-color: rgb(255, 116, 65);
+                border: 1px solid rgb(172, 46, 0);
+                width: 15%;
+                flex-grow: 1;
+                color: white;
+                padding: 8px 20px;
+                transition: 200ms;
+            }
+
+            button:hover {
+                background-color: rgb(255, 68, 0);
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            body {
+                background-color: whitesmoke;
+                padding: 0 100px;
+            }
+
+            .title {
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            }
+
+            .container {
+                padding: 24px 120px;
+                background-color: white;
+                box-shadow: 0 4px 8px rbga(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: row;
+            }
+
+            #pass {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                background-color: whitesmoke;
+                margin-right: 8px;
+                flex-grow: 1;
+                padding: 8px 20px;
+            }
+
+            button {
+                background-color: rgb(255, 116, 65);
+                border: 1px solid rgb(172, 46, 0);
+                width: 15%;
+                color: white;
+                padding: 8px 20px;
+                transition: 200ms;
+            }
+
+            button:hover {
+                background-color: rgb(255, 68, 0);
+                cursor: pointer;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    password: <span id="pass"></span><br>
-    length: <span id="length"></span>
+    <h1 class="title">Password Generator</h1>
+    <div class="container">
+        <div id="pass"></div><button onclick="random()">Generate Password</button>
+    </div>
 </body>
 <script>
     function random() {
@@ -40,15 +130,12 @@
         var testvar = "12345"
         var actualpass = shuffle(generatedpass)
         var el = document.querySelector("#pass")
-        var charlength = document.querySelector("#length")
         el.textContent = actualpass
-        charlength.textContent = actualpass.length
         console.log(`pre-shuffled pass : ${generatedpass}`)
         console.log(`shuffled pass: ${actualpass}`)
         console.log(`pass length: ${actualpass.length}`)
     }
 
-    random()
 
 
 
